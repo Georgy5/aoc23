@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require_relative "../written_digits.rb"
+require_relative "../trebuchet.rb"
 
 describe "#find_digits" do
   describe "Find written calibration value" do
