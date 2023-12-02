@@ -66,5 +66,25 @@ describe "#trebuchet" do
     it "returns a two-digit number" do
       expect(trebuchet("z39hpppnncfivenbkc")).to eq(35)
     end
+
+    it "returns a two-digit number" do
+      expect(trebuchet("oneseven2nxrcseven")).to eq(17)
+    end
+
+    it "returns a two-digit number" do
+      expect(trebuchet("53zsvpqnrjtwo5nine5nrdvmg")).to eq(55)
+    end
+
+    it "returns a two-digit number" do
+      expect(trebuchet("xeightwopbgt7two")).to eq(82)
+    end
+
+    it "returns a two-digit number" do
+      expect(trebuchet("98nine8")).to eq(98)
+    end
+
+    it "returns a two-digit number" do
+      expect(trebuchet("sevendxbninefour2fourclmln")).to eq(74)
+    end
   end
 end
