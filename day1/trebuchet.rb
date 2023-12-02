@@ -32,24 +32,28 @@ end
 def find_digits(string)
   found_digits = {}
   NUMBERS.each do |k, v|
-    if string.include?(v)
-      found_digits[v] = string.index(v)
-    end
-    if string.include?(k.to_s)
-      found_digits[k] = string.index(k.to_s)
-    end
+    add_to(string, found_digits, :index, v)
+    add_to(string, found_digits, :index, k.to_s)
+    add_to(string, found_digits, :rindex, v)
+    add_to(string, found_digits, :rindex, k.to_s)
   end
   found_digits
 end
 
+def add_to(string, found_digits, method, number)
+  if string.include?(number)
+    found_digits[string.send(method, number)] = number
+  end
+end
+
 def find_first(string)
   found_digits = find_digits(string)
-  ordered_found_digits = found_digits.values.sort
-  NUMBERS.key(found_digits.key(ordered_found_digits[POSITION[:first]]))
+  ordered_found_digits = found_digits.keys.sort
+  NUMBERS.key(found_digits[(ordered_found_digits[POSITION[:first]])])
 end
 
 def find_last(string)
   found_digits = find_digits(string)
-  ordered_found_digits = found_digits.values.sort
-  NUMBERS.key(found_digits.key(ordered_found_digits[POSITION[:last]]))
+  ordered_found_digits = found_digits.keys.sort
+  NUMBERS.key(found_digits[(ordered_found_digits[POSITION[:last]])])
 end
