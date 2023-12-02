@@ -18,6 +18,8 @@ POSITION = {
 }.freeze
 
 def trebuchet(string)
+  return 0 if string.empty?
+
   first_value = find_first(string)
   first = first_value.nil? ? string[/\d/] : first_value
 
@@ -28,14 +30,14 @@ def trebuchet(string)
 end
 
 def find_first(string)
-  return string[0] if string[0].match(/\d/)
+  return string[0] if string[0].match?(/\d/)
 
   find_first_digit(string)
 end
 
 def find_last(string)
   reversed_str = string.reverse
-  return reversed_str[0] if reversed_str[0].match(/\d/)
+  return reversed_str[0] if reversed_str[0].match?(/\d/)
 
   find_last_digit(string)
 end
