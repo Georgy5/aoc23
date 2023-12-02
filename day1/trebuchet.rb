@@ -20,10 +20,12 @@ POSITION = {
 def trebuchet(string)
   return 0 if string.empty?
 
-  first_value = find_first(string)
+  found_digits = find_digits(string)
+
+  first_value = find_first(found_digits)
   first = first_value.nil? ? string[/\d/] : first_value
 
-  last_value = find_last(string)
+  last_value = find_last(found_digits)
   last = last_value.nil? ? string.reverse[/\d/] : last_value
 
   "#{first}#{last}".to_i
@@ -46,14 +48,15 @@ def add_to(string, found_digits, method, number)
   end
 end
 
-def find_first(string)
-  found_digits = find_digits(string)
-  ordered_found_digits = found_digits.keys.sort
-  NUMBERS.key(found_digits[(ordered_found_digits[POSITION[:first]])])
+def find_first(found_digits)
+  return_digit(found_digits, :first)
 end
 
-def find_last(string)
-  found_digits = find_digits(string)
+def find_last(found_digits)
+  return_digit(found_digits, :last)
+end
+
+def return_digit(found_digits, position)
   ordered_found_digits = found_digits.keys.sort
-  NUMBERS.key(found_digits[(ordered_found_digits[POSITION[:last]])])
+  NUMBERS.key(found_digits[(ordered_found_digits[POSITION[position]])])
 end
