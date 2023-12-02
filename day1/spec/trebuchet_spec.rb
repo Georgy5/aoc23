@@ -18,5 +18,9 @@ describe "#trebuchet" do
     it "return a two-digit number" do
       expect(trebuchet("treb7uchet")).to eq(77)
     end
+
+    it "return a two-digit number" do
+      expect(trebuchet("two1nine")).to eq(29)
+    end
   end
 end
