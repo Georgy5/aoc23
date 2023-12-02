@@ -29,36 +29,26 @@ def trebuchet(string)
   "#{first}#{last}".to_i
 end
 
-def find_first(string)
-  return string[0] if string[0].match?(/\d/)
-
-  find_first_digit(string)
-end
-
-def find_last(string)
-  reversed_str = string.reverse
-  return reversed_str[0] if reversed_str[0].match?(/\d/)
-
-  find_last_digit(string)
-end
-
 def find_digits(string)
   found_digits = {}
   NUMBERS.each do |k, v|
     if string.include?(v)
       found_digits[v] = string.index(v)
     end
+    if string.include?(k.to_s)
+      found_digits[k] = string.index(k.to_s)
+    end
   end
   found_digits
 end
 
-def find_first_digit(string)
+def find_first(string)
   found_digits = find_digits(string)
   ordered_found_digits = found_digits.values.sort
   NUMBERS.key(found_digits.key(ordered_found_digits[POSITION[:first]]))
 end
 
-def find_last_digit(string)
+def find_last(string)
   found_digits = find_digits(string)
   ordered_found_digits = found_digits.values.sort
   NUMBERS.key(found_digits.key(ordered_found_digits[POSITION[:last]]))
